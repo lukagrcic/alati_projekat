@@ -47,8 +47,5 @@ public class LaptopController {
         return laptopServis.laptopPoRasponuCene(min, max);
     }
 
-    @GetMapping("/do-cene")
-    public List<Laptop> doMaksimalneCene(@RequestParam BigDecimal max) {
-        return laptopServis.laptopDoMaksimalneCene(max);
-    }
+
 }

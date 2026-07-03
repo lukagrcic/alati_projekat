@@ -1,13 +1,10 @@
 package rs.fon.laptopprodaja.controller;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 import rs.fon.laptopprodaja.dto.KreirajRacunZahtev;
 import rs.fon.laptopprodaja.entity.Racun;
 import rs.fon.laptopprodaja.service.RacunServis;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -35,11 +32,6 @@ public class RacunController {
         return racunServis.vratiRacun(id);
     }
 
-    @DeleteMapping("/{id}")
-    public void obrisi(@PathVariable Long id) {
-        racunServis.obrisiRacun(id);
-    }
-
     @GetMapping("/po-prodavcu/{idProdavac}")
     public List<Racun> poProddavcu(@PathVariable Long idProdavac) {
         return racunServis.racuniZaProdavca(idProdavac);
@@ -50,15 +42,5 @@ public class RacunController {
         return racunServis.racuniZaKupca(idKupac);
     }
 
-    @GetMapping("/po-periodu")
-    public List<Racun> poPeriodu(
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate od,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate kraj) {
-        return racunServis.racuniUPeriodu(od, kraj);
-    }
 
-    @GetMapping("/nad-iznosom")
-    public List<Racun> nadIznosom(@RequestParam BigDecimal iznos) {
-        return racunServis.racuniNadIznosom(iznos);
-    }
 }

@@ -68,9 +68,5 @@ public class LaptopServisImpl implements LaptopServis {
         return laptopRepository.findByCenaBetween(min, max);
     }
 
-    @Override
-    public List<Laptop> laptopDoMaksimalneCene(BigDecimal max) {
-        if (max == null) throw new NullPointerException("Maksimalna cena ne sme biti null");
-        return laptopRepository.findByCenaLessThanEqual(max);
-    }
+
 }

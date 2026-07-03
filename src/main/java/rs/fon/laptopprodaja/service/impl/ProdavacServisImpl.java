@@ -3,7 +3,6 @@ package rs.fon.laptopprodaja.service.impl;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-import rs.fon.laptopprodaja.entity.PrSS;
 import rs.fon.laptopprodaja.entity.Prodavac;
 import rs.fon.laptopprodaja.entity.StrSprema;
 import rs.fon.laptopprodaja.repository.ProdavacRepository;
@@ -34,20 +33,6 @@ public class ProdavacServisImpl implements ProdavacServis {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Pogresno korisnicko ime ili sifra");
         }
         return prodavac;
-    }
-
-    @Override
-    public Prodavac dodajStrucnuSpremuProdavcu(Long idProdavac, Long idStrucnaSprema, LocalDate datum) {
-        if (idProdavac == null) throw new NullPointerException("ID prodavca ne sme biti null");
-        if (idStrucnaSprema == null) throw new NullPointerException("ID strucne spreme ne sme biti null");
-        Prodavac prodavac = prodavacRepository.findById(idProdavac)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Prodavac ne postoji: " + idProdavac));
-        StrSprema strSprema = strSpremaRepository.findById(idStrucnaSprema)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Strucna sprema ne postoji: " + idStrucnaSprema));
-
-        PrSS veza = new PrSS(prodavac, strSprema, datum != null ? datum : LocalDate.now());
-        prodavac.getStrucneSpreme().add(veza);
-        return prodavacRepository.save(prodavac);
     }
 
     @Override

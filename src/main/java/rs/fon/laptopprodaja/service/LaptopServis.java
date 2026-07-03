@@ -12,5 +12,5 @@ public interface LaptopServis {
     List<Laptop> pretraziLaptope(String naziv);
     Laptop vratiLaptop(Long id);
     List<Laptop> laptopPoRasponuCene(BigDecimal min, BigDecimal max);
-    List<Laptop> laptopDoMaksimalneCene(BigDecimal max);
+
 }

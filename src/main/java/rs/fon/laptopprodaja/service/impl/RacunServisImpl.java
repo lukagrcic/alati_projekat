@@ -73,15 +73,6 @@ public class RacunServisImpl implements RacunServis {
     }
 
     @Override
-    public void obrisiRacun(Long id) {
-        if (id == null) throw new NullPointerException("ID ne sme biti null");
-        if (!racunRepository.existsById(id)) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Racun ne postoji: " + id);
-        }
-        racunRepository.deleteById(id);
-    }
-
-    @Override
     public List<Racun> racuniZaProdavca(Long idProdavac) {
         if (idProdavac == null) throw new NullPointerException("ID prodavca ne sme biti null");
         return racunRepository.findByProdavac_IdProdavac(idProdavac);
@@ -93,16 +84,5 @@ public class RacunServisImpl implements RacunServis {
         return racunRepository.findByKupac_IdKupac(idKupac);
     }
 
-    @Override
-    public List<Racun> racuniUPeriodu(LocalDate od, LocalDate kraj) {
-        if (od == null) throw new NullPointerException("Pocetni datum ne sme biti null");
-        if (kraj == null) throw new NullPointerException("Krajnji datum ne sme biti null");
-        return racunRepository.findByDatumBetween(od, kraj);
-    }
 
-    @Override
-    public List<Racun> racuniNadIznosom(BigDecimal iznos) {
-        if (iznos == null) throw new NullPointerException("Iznos ne sme biti null");
-        return racunRepository.findByUkupanIznosGreaterThanEqual(iznos);
-    }
 }
