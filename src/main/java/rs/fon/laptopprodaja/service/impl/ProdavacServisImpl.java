@@ -12,12 +12,28 @@ import rs.fon.laptopprodaja.service.ProdavacServis;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * Implementira ProdavacServis koristeci ProdavacRepository za pristup
+ * podacima o prodavcima i StrSpremaRepository za pristup podacima o
+ * strucnim spremama.
+ *
+ * @author Luka Grcic
+ * @version 1.0
+ */
 @Service
 public class ProdavacServisImpl implements ProdavacServis {
 
+    /** Repozitorijum za pristup podacima o prodavcima. */
     private final ProdavacRepository prodavacRepository;
+    /** Repozitorijum za pristup podacima o strucnim spremama. */
     private final StrSpremaRepository strSpremaRepository;
 
+    /**
+     * Kreira novu instancu servisa sa zadatim repozitorijumima.
+     *
+     * @param prodavacRepository Repozitorijum za pristup podacima o prodavcima.
+     * @param strSpremaRepository Repozitorijum za pristup podacima o strucnim spremama.
+     */
     public ProdavacServisImpl(ProdavacRepository prodavacRepository, StrSpremaRepository strSpremaRepository) {
         this.prodavacRepository = prodavacRepository;
         this.strSpremaRepository = strSpremaRepository;

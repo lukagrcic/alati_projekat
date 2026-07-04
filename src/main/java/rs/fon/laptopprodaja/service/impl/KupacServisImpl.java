@@ -11,11 +11,24 @@ import rs.fon.laptopprodaja.service.KupacServis;
 
 import java.util.List;
 
+/**
+ * Implementira KupacServis koristeci KupacRepository za pristup
+ * podacima o kupcima.
+ *
+ * @author Luka Grcic
+ * @version 1.0
+ */
 @Service
 public class KupacServisImpl implements KupacServis {
 
+    /** Repozitorijum za pristup podacima o kupcima. */
     private final KupacRepository kupacRepository;
 
+    /**
+     * Kreira novu instancu servisa sa zadatim repozitorijumom.
+     *
+     * @param kupacRepository Repozitorijum za pristup podacima o kupcima.
+     */
     public KupacServisImpl(KupacRepository kupacRepository) {
         this.kupacRepository = kupacRepository;
     }

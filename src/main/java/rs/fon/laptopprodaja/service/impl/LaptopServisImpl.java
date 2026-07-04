@@ -10,11 +10,24 @@ import rs.fon.laptopprodaja.service.LaptopServis;
 import java.math.BigDecimal;
 import java.util.List;
 
+/**
+ * Implementira LaptopServis koristeci LaptopRepository za pristup
+ * podacima o laptopovima.
+ *
+ * @author Luka Grcic
+ * @version 1.0
+ */
 @Service
 public class LaptopServisImpl implements LaptopServis {
 
+    /** Repozitorijum za pristup podacima o laptopovima. */
     private final LaptopRepository laptopRepository;
 
+    /**
+     * Kreira novu instancu servisa sa zadatim repozitorijumom.
+     *
+     * @param laptopRepository Repozitorijum za pristup podacima o laptopovima.
+     */
     public LaptopServisImpl(LaptopRepository laptopRepository) {
         this.laptopRepository = laptopRepository;
     }

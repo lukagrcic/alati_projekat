@@ -9,12 +9,28 @@ import rs.fon.laptopprodaja.service.SifarnikServis;
 
 import java.util.List;
 
+/**
+ * Implementira SifarnikServis koristeci GradRepository za pristup
+ * podacima o gradovima i StrSpremaRepository za pristup podacima o
+ * strucnim spremama.
+ *
+ * @author Luka Grcic
+ * @version 1.0
+ */
 @Service
 public class SifarnikServisImpl implements SifarnikServis {
 
+    /** Repozitorijum za pristup podacima o gradovima. */
     private final GradRepository gradRepository;
+    /** Repozitorijum za pristup podacima o strucnim spremama. */
     private final StrSpremaRepository strSpremaRepository;
 
+    /**
+     * Kreira novu instancu servisa sa zadatim repozitorijumima.
+     *
+     * @param gradRepository Repozitorijum za pristup podacima o gradovima.
+     * @param strSpremaRepository Repozitorijum za pristup podacima o strucnim spremama.
+     */
     public SifarnikServisImpl(GradRepository gradRepository, StrSpremaRepository strSpremaRepository) {
         this.gradRepository = gradRepository;
         this.strSpremaRepository = strSpremaRepository;
